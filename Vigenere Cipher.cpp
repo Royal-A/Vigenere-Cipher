@@ -36,7 +36,7 @@ string decode(string message, string key) {                                     
             j = (j + 1) % key.length();                                             //iterator for "key" string. Will loop back to first letter via Modulo
         }
         else
-            output += message[i];                                                   //appends characters that doesn't meet criteria for encryption
+            output += message[i];                                                   //appends characters that doesn't meet criteria for encryption. You'll have functioning grammar with your message.
     }
     return output;
 }
@@ -45,13 +45,25 @@ string decode(string message, string key) {                                     
 int main(){
     string message;                                                                 //holds the message that will be encrypted/decrypted
     string key;                                                                     //holds key that will be used to encrypt or decrypt message
-    bool validselection=false;                                                      //used to select if the message will be encoded or decoded. 1 is for encoding, 2 for decoding.
+    int cryptionselection = 0;                                                      //used to select if the message will be encoded or decoded. 1 is for encoding, 2 for decoding.
     cout << "--Vigenere Cipher Encrypting/Decryption--\n\n";
-
+    cout << "Please enter your selection:\n 1.Encrypt message\n 2.Decrypt message\n";
+    cin>>cryptionselection;
+    while(cryptionselection!=1&&cryptionselection!=2)                               //input validation
+    {
+        cin.clear();                                                                //clears the error flag
+        cin.ignore(100, '\n');                                                      //removes unwanted characters
+        cout << "Invalid selection.\nPlease enter your selection:\n 1.Encrypt message\n 2.Decrypt message\n";
+        cin >> cryptionselection;
+    }
+    cin.ignore();                                                                   //just to get the "getline"s working again. Thank you stackoverflow.
     cout << "Please enter your message: \n";
-    getline(cin, message);                                                          ////user input for string "message". using getline because cin ignores whitespaces for some reason.
+    getline(cin, message);                                                          //user input for string "message". using getline because cin ignores whitespace.
     cout << "Please enter your key: \n";
     getline(cin, key);                                                              //user input for string "key"
     transform(key.begin(), key.end(), key.begin(), ::tolower);                      //converts string "key" to all lowercase. It shouldn't matter what case the key comes in so I might as well make it consistant
-    cout<<"Message: "<<encode(message, key);                                 
+    if(cryptionselection==1)
+    cout<<"Message: "<<encode(message, key);
+    else
+    cout << "Message: " << decode(message, key);
 }
