@@ -1,14 +1,14 @@
 ##  Project description
 C++ Vigenère cipher
-##  purpose of the program
+##  Purpose of the program
 Demonstrate the use of discrete structures in C++ using the Vigenère substitution Cipher
-##  creator name
+##  Creator name
 Royal Arthurs
-##  version number
+##  Version number
 1.0
-##  date of creation
+##  Date of creation
 May 28th, 2020
-##  program usage instructions.
+##  Program usage instructions
 
 Enter '1' or '2' to select if your message is going to be encrypted or decrypted
 
